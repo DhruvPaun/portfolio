@@ -1,0 +1,42 @@
+{
+    "projects": [
+        {
+            "id": 1,
+            "title": "URL Shortener Web App",
+            "isFeatured": true,
+            "link": "https://github.com/DhruvPaun/URL-Shortner",
+            "technology": [
+                "node.js",
+                "express.js",
+                "mongodb",
+                "mongoose",
+                "EJS",
+                "express-session",
+                "cookie-parser",
+                "bcrypt",
+                "html",
+                "CSS",
+                "Bootstarp",
+                "javascript"
+            ],
+            "description": "A full-stack URL shortener with user authentication (signup, login, logout) and a personalized dashboard. The app uses cookies, sessions, and local storage to manage user data securely and MongoDB for storing URLs. Built with Express.js on the backend, it allows users to shorten links, track them, and manage their accounts easily."
+        },
+        {
+            "id": 2,
+            "title": "Blog App with React",
+            "isFeatured": true,
+            "link": "https://devblog-myprojects-dp.vercel.app/",
+            "technology": [
+                "react",
+                "vite",
+                "appwrite",
+                "tinymce",
+                "redux toolkit",
+                "react router dom",
+                "react hook form",
+                "tailwind css"
+            ],
+            "description": "A modern React blog with user authentication and secure storage via Appwrite. Users can create, edit, and delete posts using a TinyMCE editor. Features include Redux Toolkit for state management, React Router for navigation, React Hook Form for forms, and forward refs for flexibility"
+        }
+    ]
+}

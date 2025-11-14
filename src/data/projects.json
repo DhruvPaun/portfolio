@@ -1,0 +1,42 @@
+{
+    "projects": [
+        {
+            "id": 1,
+            "title": "URL Shortener Web App",
+            "isFeatured": true,
+            "link": "https://github.com/DhruvPaun/URL-Shortner",
+            "technology": [
+                "node.js",
+                "express.js",
+                "mongodb",
+                "mongoose",
+                "EJS",
+                "express-session",
+                "cookie-parser",
+                "bcrypt",
+                "html",
+                "CSS",
+                "Bootstarp",
+                "javascript"
+            ],
+            "description": "The URL Shortener Web App is a complete full-stack project designed to simplify link management while demonstrating secure authentication and robust backend logic. Built with Node.js and Express.js, the application allows users to create shortened URLs and manage them through a personalized dashboard. Each shortened link is stored in MongoDB, along with metadata for analytics such as click counts and timestamps. The app features a full authentication system that supports user signup, login, and logout functionality. Sessions and cookies are implemented using express-session and cookie-parser, ensuring that users stay securely logged in without needing to reauthenticate frequently. Passwords are encrypted using bcrypt, maintaining strong security practices. The frontend is rendered using EJS templates, providing a clean and responsive UI for both guest users and authenticated users. Guests are allowed to shorten URLs with limited credits, while registered users gain access to a dashboard that tracks all their links, total clicks, and individual link statistics. Additional client-side functionality utilizes local storage to improve the user experience and preserve temporary data. The project also follows the MVC architecture, keeping business logic, routes, and views modular and maintainable. Overall, this project demonstrates a practical implementation of session-based authentication, data persistence with MongoDB, and dynamic server-side rendering, making it a solid example of a secure and efficient full-stack web application."
+        },
+        {
+            "id": 2,
+            "title": "Blog App with React",
+            "isFeatured": true,
+            "link": "https://devblog-myprojects-dp.vercel.app/",
+            "technology": [
+                "react",
+                "vite",
+                "appwrite",
+                "tinymce",
+                "redux toolkit",
+                "react router dom",
+                "react hook form",
+                "tailwind css"
+            ],
+            "description": "The React Blog Application is a modern full-stack web app that enables users to create, edit, and manage blog posts seamlessly with a rich and intuitive interface. Built with React.js, the frontend leverages Redux Toolkit for efficient global state management and React Router DOM for smooth, client-side navigation between pages. Form handling and validation are powered by React Hook Form, offering an optimized and user-friendly experience for creating and editing posts. The app integrates Appwrite as a backend-as-a-service (BaaS) platform, providing secure user authentication, database storage, and file management out of the box. Registered users can log in to manage their posts, while authentication ensures that only authorized users can modify or delete content. All user and post data are securely stored and retrieved through Appwrite’s APIs. Content creation is enhanced by the TinyMCE rich text editor, allowing authors to compose and format posts easily with a clean WYSIWYG interface. Forward refs and custom hooks are utilized throughout the application to ensure flexibility and maintainable component communication. The project is fully responsive and styled with modern CSS (or Tailwind CSS) to provide a clean, minimal design that adapts across devices. It demonstrates an understanding of frontend architecture, component-driven development, and API integration while following best practices for security, form validation, and state management. Overall, this project showcases a complete content management system (CMS) built with React, focusing on user experience, performance, and scalable design — an ideal demonstration of full-stack development using modern React tools and cloud-based services."
+        }
+    ]
+}
