@@ -15,17 +15,7 @@ function Projects() {
         <h2 className="text-5xl text-white font-sans tracking-wide font-extrabold">
           Projects
         </h2>
-        <p className="mt-4 
-    text-base                
-    sm:text-lg               
-    md:text-xl               
-    lg:text-2xl              
-    leading-relaxed 
-    text-white 
-    max-w-2xl                
-    mx-auto 
-    px-4                     
-    text-center">
+        <p className="mt-4 text-3xl leading-8 tracking-tight text-white sm:text-2xl max-w-3xl mx-auto">
           Here are some of the projects I’ve built to demonstrate my skills in
           web development and problem-solving.
         </p>
