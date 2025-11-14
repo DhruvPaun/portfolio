@@ -2,8 +2,17 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-/* react-icons imports */
-import { SiReact, SiNodedotjs, SiMongodb, SiExpress, SiJavascript, SiHtml5, SiCss3, SiPython, SiGit } from "react-icons/si";
+import {
+  SiReact,
+  SiNodedotjs,
+  SiMongodb,
+  SiExpress,
+  SiJavascript,
+  SiHtml5,
+  SiCss3,
+  SiPython,
+  SiGit,
+} from "react-icons/si";
 
 /* ---------- Constants ---------- */
 const NAME = "Dhruv Paun";
@@ -41,26 +50,28 @@ const projects = [
   },
 ];
 
-const fade = {
+/* Simple, type-safe variants (no functions, no string 'ease') */
+const fadeVariants = {
   hidden: { opacity: 0, y: 12 },
-  show: (i = 1) => ({
-    opacity: 1,
-    y: 0,
-    transition: { delay: 0.06 * i, duration: 0.45, ease: "easeOut" },
-  }),
+  show: { opacity: 1, y: 0, transition: { duration: 0.45 } },
 };
 
-/* ---------- MAIN COMPONENT ---------- */
-export default function AboutSection() {
+export default function AboutPage() {
   const [open, setOpen] = useState(false);
 
   return (
     <section className="relative bg-gradient-to-b from-gray-950 to-black text-white py-16 px-6">
-      <div className="max-w-6xl mt-15 mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      <div className="max-w-6xl mt-4 mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         {/* Left */}
-        <motion.div className="lg:col-span-8" initial="hidden" whileInView="show" viewport={{ once: true }}>
+        <motion.div
+          className="lg:col-span-8"
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+          variants={fadeVariants}
+        >
           {/* Hero */}
-          <motion.div variants={fade} custom={1} className="mb-6">
+          <motion.div className="mb-6" variants={fadeVariants}>
             <h1 className="text-4xl md:text-5xl font-extrabold leading-tight">
               Hi, I’m{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-300 to-gray-400">
@@ -90,45 +101,61 @@ export default function AboutSection() {
                 Quick Contact
               </button>
 
-              <a href={GITHUB} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-3 py-2 rounded-md text-sm bg-white/8 hover:bg-white/10">
+              <a
+                href={GITHUB}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-3 py-2 rounded-md text-sm bg-white/8 hover:bg-white/10"
+              >
                 GitHub
               </a>
 
-              <a href={LINKEDIN} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-3 py-2 rounded-md text-sm bg-white/8 hover:bg-white/10">
+              <a
+                href={LINKEDIN}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-3 py-2 rounded-md text-sm bg-white/8 hover:bg-white/10"
+              >
                 LinkedIn
               </a>
             </div>
           </motion.div>
 
-          {/* Value cards */}
-          <motion.div variants={fade} custom={2} className="grid grid-cols-1 sm:grid-cols-3 gap-4 my-6">
-            <div className="p-4 bg-gray-900/60 border border-white/6 rounded-lg">
-              <div className="text-sm text-gray-300">What I deliver</div>
-              <div className="font-semibold mt-1">Production-ready solutions</div>
-            </div>
-            <div className="p-4 bg-gray-900/60 border border-white/6 rounded-lg">
-              <div className="text-sm text-gray-300">Focus</div>
-              <div className="font-semibold mt-1">Fast performance & UX</div>
-            </div>
-            <div className="p-4 bg-gray-900/60 border border-white/6 rounded-lg">
-              <div className="text-sm text-gray-300">Collaboration</div>
-              <div className="font-semibold mt-1">Clear communication</div>
-            </div>
+          {/* value cards */}
+          <motion.div className="grid grid-cols-1 sm:grid-cols-3 gap-4 my-6">
+            {[
+              { title: "What I deliver", subtitle: "Production-ready solutions" },
+              { title: "Focus", subtitle: "Fast performance & UX" },
+              { title: "Collaboration", subtitle: "Clear communication" },
+            ].map((card, idx) => (
+              <motion.div
+                key={card.title}
+                variants={fadeVariants}
+                transition={{ delay: idx * 0.06 }}
+                className="p-4 bg-gray-900/60 border border-white/6 rounded-lg"
+              >
+                <div className="text-sm text-gray-300">{card.title}</div>
+                <div className="font-semibold mt-1">{card.subtitle}</div>
+              </motion.div>
+            ))}
           </motion.div>
 
-          {/* Skills (react-icons) */}
-          <motion.div variants={fade} custom={3} className="mt-6">
-            <h3 className="text-xl font-semibold mb-4">Core Skills</h3>
+          {/* Skills */}
+          <motion.div className="mt-6">
+            <motion.h3 variants={fadeVariants} className="text-xl font-semibold mb-4">
+              Core Skills
+            </motion.h3>
+
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
               {skills.map((s, i) => {
                 const Icon = s.Icon;
                 return (
                   <motion.div
                     key={s.id}
-                    variants={{
-                      hidden: { opacity: 0, y: 8 },
-                      show: { opacity: 1, y: 0, transition: { delay: i * 0.04 } },
-                    }}
+                    initial={{ opacity: 0, y: 8 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.04, duration: 0.35 }}
                     className="flex items-center gap-3 p-3 rounded-lg bg-gray-900/50 border border-white/6"
                   >
                     <div className="w-8 h-8 flex items-center justify-center text-white text-opacity-90">
@@ -142,16 +169,18 @@ export default function AboutSection() {
           </motion.div>
 
           {/* Projects compact */}
-          <motion.div variants={fade} custom={4} className="mt-8">
-            <h3 className="text-xl font-semibold mb-4"> Projects</h3>
+          <motion.div className="mt-8">
+            <motion.h3 variants={fadeVariants} className="text-xl font-semibold mb-4">
+              Projects
+            </motion.h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {projects.map((p, idx) => (
                 <motion.article
                   key={p.id}
-                  variants={{
-                    hidden: { opacity: 0, y: 8 },
-                    show: { opacity: 1, y: 0, transition: { delay: idx * 0.06 } },
-                  }}
+                  initial={{ opacity: 0, y: 8 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: idx * 0.06, duration: 0.35 }}
                   className="p-4 rounded-lg bg-gray-900/60 border border-white/6"
                 >
                   <div className="flex items-start justify-between">
@@ -178,7 +207,12 @@ export default function AboutSection() {
         </motion.div>
 
         {/* Right sticky side card */}
-        <motion.aside className="lg:col-span-4 sticky top-24 self-start" initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+        <motion.aside
+          className="lg:col-span-4 sticky top-24 self-start"
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+        >
           <div className="p-5 rounded-xl bg-gradient-to-br from-gray-900/70 to-gray-800/60 border border-white/6">
             <div className="flex items-center gap-3">
               <div className="rounded-md bg-white/6 w-12 h-12 flex items-center justify-center text-black font-bold">DP</div>
@@ -204,13 +238,26 @@ export default function AboutSection() {
             </div>
 
             <div className="mt-5 flex flex-col gap-3">
-              <a href={`mailto:${EMAIL}?subject=Work inquiry`} className="w-full text-center px-4 py-2 rounded-md bg-gradient-to-r from-gray-300 via-gray-400 to-gray-500 text-gray-900 font-semibold">
+              <a
+                href={`mailto:${EMAIL}?subject=Work inquiry`}
+                className="w-full text-center px-4 py-2 rounded-md bg-gradient-to-r from-gray-300 via-gray-400 to-gray-500 text-gray-900 font-semibold"
+              >
                 Contact for Work
               </a>
-              <a href={GITHUB} target="_blank" rel="noopener noreferrer" className="w-full text-center px-4 py-2 rounded-md border border-white/8 bg-white/6">
+              <a
+                href={GITHUB}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full text-center px-4 py-2 rounded-md border border-white/8 bg-white/6"
+              >
                 View Code
               </a>
-              <a href={LINKEDIN} target="_blank" rel="noopener noreferrer" className="w-full text-center px-4 py-2 rounded-md border border-white/8 bg-white/6">
+              <a
+                href={LINKEDIN}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full text-center px-4 py-2 rounded-md border border-white/8 bg-white/6"
+              >
                 LinkedIn
               </a>
             </div>
@@ -218,7 +265,10 @@ export default function AboutSection() {
 
           <div className="mt-6 p-4 rounded-lg bg-gray-900/50 border border-white/6">
             <div className="text-xs text-gray-400">Why hire me</div>
-            <div className="mt-2 text-sm text-gray-300">I transform ideas into polished, scalable digital products with clear communication and dependable delivery.</div>
+            <div className="mt-2 text-sm text-gray-300">
+              I transform ideas into polished, scalable digital products with clear
+              communication and dependable delivery.
+            </div>
           </div>
         </motion.aside>
       </div>
@@ -234,10 +284,15 @@ export default function AboutSection() {
                   <h4 className="text-lg font-semibold">Quick Contact</h4>
                   <button onClick={() => setOpen(false)} className="text-gray-400">✕</button>
                 </div>
-                <p className="mt-3 text-gray-300">Email me at <a href={`mailto:${EMAIL}`} className="text-white underline">{EMAIL}</a> with your project details, and I’ll get back with a quote.</p>
+                <p className="mt-3 text-gray-300">
+                  Email me at <a href={`mailto:${EMAIL}`} className="text-white underline">{EMAIL}</a> with your project details, and I’ll get back with a quote.
+                </p>
 
                 <div className="mt-4">
-                  <a href={`mailto:${EMAIL}?subject=Freelance%20Inquiry&body=Hi%20Dhruv,%0A%0AI%20have%20a%20project%20about...`} className="inline-block w-full text-center px-4 py-2 rounded-md bg-gradient-to-r from-gray-300 via-gray-400 to-gray-500 text-gray-900 font-semibold">
+                  <a
+                    href={`mailto:${EMAIL}?subject=Freelance%20Inquiry&body=Hi%20Dhruv,%0A%0AI%20have%20a%20project%20about...`}
+                    className="inline-block w-full text-center px-4 py-2 rounded-md bg-gradient-to-r from-gray-300 via-gray-400 to-gray-500 text-gray-900 font-semibold"
+                  >
                     Email with project details
                   </a>
                 </div>
